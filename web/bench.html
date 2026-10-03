@@ -1,0 +1,63 @@
+<!doctype html><html><head><meta charset="utf-8"><title>airlock bench</title></head><body>
+<pre id="log"></pre>
+<script type="module">
+import { createVault, mergeSpans, pseudonymize, structuredSpans } from './airlock.js';
+const log = (s) => (document.getElementById('log').textContent += s + '\n');
+const reference = await (await fetch('../out/reference.json')).json();
+const models = {
+  int8: { url: '../out/airlock-ner.int8.onnx', sha: (await (await fetch('../out/airlock-ner.int8.onnx.sha256')).text()).trim(), key: 'argmax' },
+  fp32: { url: '../out/airlock-ner.onnx', sha: null, key: 'argmax_fp32' },
+  fp16: { url: '../out/airlock-ner.fp16.onnx', sha: null, key: 'argmax_fp32' },
+};
+
+function call(worker, msg) {
+  return new Promise((resolve) => {
+    const id = Math.random();
+    const onMessage = ({ data }) => { if (data.id === id) { worker.removeEventListener('message', onMessage); resolve(data); } };
+    worker.addEventListener('message', onMessage);
+    worker.postMessage({ ...msg, id });
+  });
+}
+
+const median = (xs) => { const s = [...xs].sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; };
+const configs = [['int8', 'wasm', 1], ['int8', 'wasm', 4], ['fp32', 'wasm', 4], ['int8', 'webgpu', 4], ['fp32', 'webgpu', 4], ['fp16', 'webgpu', 4], ['fp16', 'wasm', 4]];
+const adapter = navigator.gpu ? await navigator.gpu.requestAdapter() : null;
+const results = { userAgent: navigator.userAgent, crossOriginIsolated: self.crossOriginIsolated, gpu: adapter ? { vendor: adapter.info?.vendor, architecture: adapter.info?.architecture, description: adapter.info?.description, fallback: adapter.info?.isFallbackAdapter } : null, runs: [] };
+for (const [modelName, ep, threads] of configs) {
+  const model = models[modelName];
+  const worker = new Worker('./worker.js', { type: 'module' });
+  const init = await call(worker, { type: 'init', modelUrl: model.url, modelSha256: model.sha, vocabUrl: '../out/vocab.txt', labelsUrl: '../out/labels.json', executionProvider: ep, threads });
+  if (!init.ok) { results.runs.push({ modelName, ep, threads, error: init.error }); log(`${modelName}/${ep}/${threads}: ${init.error}`); worker.terminate(); continue; }
+  let same = 0, total = 0, samePt = 0;
+  const examples = [];
+  for (const ref of reference) {
+    const r = await call(worker, { type: 'detect', text: ref.text });
+    r.argmax.forEach((a, i) => { total++; if (a === ref[model.key][i]) same++; if (a === ref.argmax_fp32[i]) samePt++; });
+    if (examples.length < 40) {
+      const spans = mergeSpans(ref.text, [...r.spans, ...structuredSpans(ref.text)]);
+      examples.push({ text: ref.text, safe: pseudonymize(ref.text, spans, createVault()), modelSpans: r.spans });
+    }
+  }
+  const times = [];
+  for (let i = 0; i < 35; i++) { const r = await call(worker, { type: 'detect', text: reference[0].text }); if (i >= 5) times.push(r.ms); }
+  const run = { modelName, ep, threads, initMs: Math.round(init.ms), isolated: init.isolated, agreementVsNativeSameModel: +(same / total).toFixed(4), agreementVsPytorchFp32: +(samePt / total).toFixed(4), medianMs: +median(times).toFixed(2) };
+  if (modelName === 'int8' && ep === 'wasm' && threads === 4) run.examples = examples;
+  results.runs.push(run);
+  log(JSON.stringify({ ...run, examples: undefined }));
+  worker.terminate();
+}
+// Self-test on 5 golden tickets, the startup gate the article recommends.
+results.selfTest = [];
+const goldens = await (await fetch('../out/goldens.json')).json();
+for (const [modelName, ep] of [['int8', 'webgpu'], ['fp16', 'webgpu'], ['int8', 'wasm']]) {
+  const worker = new Worker('./worker.js', { type: 'module' });
+  const model = models[modelName];
+  await call(worker, { type: 'init', modelUrl: model.url, modelSha256: model.sha, vocabUrl: '../out/vocab.txt', labelsUrl: '../out/labels.json', executionProvider: ep, threads: 4 });
+  const r = await call(worker, { type: 'selftest', goldens });
+  results.selfTest.push({ modelName, ep, agreement: +r.agreement.toFixed(4) });
+  log(`selftest ${modelName}/${ep}: ${r.agreement}`);
+  worker.terminate();
+}
+window.results = results;
+window.done = true;
+</script></body></html>
