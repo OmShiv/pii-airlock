@@ -1,0 +1,1125 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+  "crossOriginIsolated": true,
+  "gpu": {
+    "vendor": "apple",
+    "architecture": "metal-3",
+    "description": "",
+    "fallback": false
+  },
+  "runs": [
+    {
+      "modelName": "int8",
+      "ep": "wasm",
+      "threads": 1,
+      "initMs": 501,
+      "isolated": true,
+      "agreementVsNativeSameModel": 0.9885,
+      "agreementVsPytorchFp32": 0.9815,
+      "medianMs": 199.38
+    },
+    {
+      "modelName": "int8",
+      "ep": "wasm",
+      "threads": 4,
+      "initMs": 344,
+      "isolated": true,
+      "agreementVsNativeSameModel": 0.9885,
+      "agreementVsPytorchFp32": 0.9815,
+      "medianMs": 57.72,
+      "examples": [
+        {
+          "text": "Hi, this is Priya Raman from Contoso in Seattle. My card ending 1111 was charged twice.",
+          "safe": "Hi, this is [PERSON_1] from [LOCATION_1] in [LOCATION_2]. My card ending 1111 was charged twice.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 12,
+              "end": 23,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 29,
+              "end": 36,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 40,
+              "end": 47,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Please call Daniel Okafor back at +1 206 555 0143 about the refund for order 88412.",
+          "safe": "Please call [PERSON_1] back at [PHONE_1] about the refund for order 88412.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 12,
+              "end": 25,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Maria Gonzalez in Madrid says the invoice from Fabrikam never arrived at maria.gonzalez@example.com.",
+          "safe": "[PERSON_1] in [LOCATION_1] says the invoice from Fabrikam never arrived at [EMAIL_1].",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 14,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 18,
+              "end": 24,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "MISC",
+              "start": 47,
+              "end": 55,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Tom Becker asked whether Northwind Traders can move his delivery to the Berlin warehouse.",
+          "safe": "[PERSON_1] asked whether Northwind Traders can move his delivery to the [LOCATION_1] warehouse.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 10,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "MISC",
+              "start": 25,
+              "end": 34,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 72,
+              "end": 78,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Our customer Aiko Tanaka, who works at Tailspin Toys in Osaka, cannot log in since Tuesday.",
+          "safe": "Our customer [PERSON_1], who works at [ORG_1] in [LOCATION_1], cannot log in since Tuesday.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 13,
+              "end": 24,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 39,
+              "end": 52,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 56,
+              "end": 61,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Escalate to Rahul Mehta: the Adventure Works account in Pune is locked after three attempts.",
+          "safe": "Escalate to [PERSON_1]: the [ORG_1] account in [LOCATION_1] is locked after three attempts.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 12,
+              "end": 23,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 29,
+              "end": 44,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 56,
+              "end": 60,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Sophie Martin from Lyon wants her subscription paused until she returns from Montreal.",
+          "safe": "[PERSON_1] from [LOCATION_1] wants her subscription paused until she returns from [LOCATION_2].",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 13,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 19,
+              "end": 23,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 77,
+              "end": 85,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "James O'Connor emailed from Dublin about a duplicate charge on his Woodgrove Bank statement.",
+          "safe": "[PERSON_1] emailed from [LOCATION_1] about a duplicate charge on his [ORG_1] statement.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 14,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 28,
+              "end": 34,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 67,
+              "end": 81,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Lena Fischer and her colleague Jonas Weber at Litware in Munich both report the same sync error.",
+          "safe": "[PERSON_1] and her colleague [PERSON_2] at [ORG_1] in [LOCATION_1] both report the same sync error.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 12,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "PERSON",
+              "start": 31,
+              "end": 42,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 46,
+              "end": 53,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 57,
+              "end": 63,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "The shipment for Carlos Silva is stuck in customs at São Paulo, according to Wingtip Logistics.",
+          "safe": "The shipment for [PERSON_1] is stuck in customs at [LOCATION_1], according to [ORG_1].",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 17,
+              "end": 29,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 53,
+              "end": 62,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 77,
+              "end": 94,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Fatima Al-Sayed called from Dubai to update the billing address for Proseware.",
+          "safe": "[PERSON_1] called from [LOCATION_1] to update the billing address for Proseware.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 15,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 28,
+              "end": 33,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "MISC",
+              "start": 68,
+              "end": 77,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Wei Zhang from Shanghai needs a VAT invoice for the Contoso enterprise plan.",
+          "safe": "[PERSON_1] from [LOCATION_1] needs a VAT invoice for the [ORG_1] enterprise plan.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 9,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 15,
+              "end": 23,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 52,
+              "end": 59,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Ngozi Adeyemi at Lagos General Hospital asked us to remove her old phone number from the account.",
+          "safe": "[PERSON_1] at [LOCATION_1] asked us to remove her old phone number from the account.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 13,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 17,
+              "end": 39,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Arjun Nair in Bengaluru reports that the mobile app crashes when he opens the payments tab.",
+          "safe": "[PERSON_1] in [LOCATION_1] reports that the mobile app crashes when he opens the payments tab.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 10,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 14,
+              "end": 23,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Emma Johansson from Stockholm would like a callback from someone on the Fabrikam team.",
+          "safe": "[PERSON_1] from [LOCATION_1] would like a callback from someone on the [ORG_1] team.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 14,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 20,
+              "end": 29,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 72,
+              "end": 80,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Hiroshi Sato, the IT admin at Tailspin Toys, wants to reset two-factor authentication for Kenji Mori.",
+          "safe": "[PERSON_1], the IT admin at [ORG_1] [LOCATION_1], wants to reset two-factor authentication for [PERSON_2].",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 12,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 30,
+              "end": 38,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 39,
+              "end": 43,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "PERSON",
+              "start": 90,
+              "end": 100,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Olivia Brown says the technician from Northwind never showed up at her flat in Manchester.",
+          "safe": "[PERSON_1] says the technician from [PERSON_2] never showed up at her flat in [LOCATION_1].",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 12,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "PERSON",
+              "start": 38,
+              "end": 47,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 79,
+              "end": 89,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Please refund Lucas Moreau, who was billed in euros although he lives in Quebec.",
+          "safe": "Please refund [PERSON_1], who was billed in euros although he lives in [LOCATION_1].",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 14,
+              "end": 26,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 73,
+              "end": 79,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Ana Petrović from Belgrade cannot download last month's statement from the Woodgrove portal.",
+          "safe": "[PERSON_1] from [LOCATION_1] cannot download last month's statement from the [ORG_1] portal.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 12,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 18,
+              "end": 26,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 75,
+              "end": 84,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Mohammed Rahman at Adventure Works in Dhaka asked for a copy of his contract.",
+          "safe": "[PERSON_1] at [ORG_1] in [LOCATION_1] asked for a copy of his contract.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 15,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 19,
+              "end": 34,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 38,
+              "end": 43,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Grace Kim from Toronto reports that her password reset link expired before she could use it.",
+          "safe": "[PERSON_1] from [LOCATION_1] reports that her password reset link expired before she could use it.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 9,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 15,
+              "end": 22,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "The ticket from Peter Novak in Prague mentions a missing parcel sent through Wingtip Logistics.",
+          "safe": "The ticket from [PERSON_1] in [LOCATION_1] mentions a missing parcel sent through [ORG_1].",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 16,
+              "end": 27,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 31,
+              "end": 37,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 77,
+              "end": 94,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Isabella Rossi wants to transfer the Litware license to her new manager, Marco Bianchi, in Milan.",
+          "safe": "[PERSON_1] wants to transfer the Litware license to her new manager, [PERSON_2], in [LOCATION_1].",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 14,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "MISC",
+              "start": 37,
+              "end": 44,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "PERSON",
+              "start": 73,
+              "end": 86,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 91,
+              "end": 96,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Samuel Mensah from Accra asked why his Proseware trial ended early.",
+          "safe": "[PERSON_1] from [LOCATION_1] asked why his Proseware trial ended early.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 13,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 19,
+              "end": 24,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "MISC",
+              "start": 39,
+              "end": 48,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Chloé Dubois in Brussels needs her account name changed after her marriage.",
+          "safe": "[PERSON_1] in [LOCATION_1] needs her account name changed after her marriage.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 12,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 16,
+              "end": 24,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Kwame Asante, who manages procurement at Contoso Ghana, wants a quote for fifty seats.",
+          "safe": "[PERSON_1], who manages procurement at [LOCATION_1], wants a quote for fifty seats.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 12,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 41,
+              "end": 54,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Elif Yılmaz from Istanbul says the app shows prices in the wrong currency.",
+          "safe": "[PERSON_1] from [LOCATION_1] says the app shows prices in the wrong currency.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 11,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 17,
+              "end": 25,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Noah Williams called from Austin to cancel the Fabrikam add-on he never ordered.",
+          "safe": "[PERSON_1] called from [LOCATION_1] to cancel the Fabrikam add-on he never ordered.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 13,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 26,
+              "end": 32,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "MISC",
+              "start": 47,
+              "end": 55,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Mei Lin at Tailspin Toys in Taipei is waiting on a replacement device.",
+          "safe": "[PERSON_1] at [LOCATION_1] in [LOCATION_2] is waiting on a replacement device.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 7,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 11,
+              "end": 24,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 28,
+              "end": 34,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Rafael Costa from Lisbon asked whether Northwind Traders ships to Porto on weekends.",
+          "safe": "[PERSON_1] from [LOCATION_1] asked whether Northwind Traders ships to [LOCATION_2] on weekends.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 12,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 18,
+              "end": 24,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "MISC",
+              "start": 39,
+              "end": 48,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 66,
+              "end": 71,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Zainab Bello reported that the courier left her package with a neighbour in Abuja.",
+          "safe": "[PERSON_1] reported that the courier left her package with a neighbour in [LOCATION_1].",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 12,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 76,
+              "end": 81,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Daniel Cohen at Woodgrove Bank in Tel Aviv wants API access for his team.",
+          "safe": "[PERSON_1] at [ORG_1] in [LOCATION_1] wants [ORG_2] access for his team.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 12,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 16,
+              "end": 30,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 34,
+              "end": 42,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 49,
+              "end": 52,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Sakura Ito from Kyoto cannot see the invoices her colleague Yuki Watanabe uploaded.",
+          "safe": "[PERSON_1] from [LOCATION_1] cannot see the invoices her colleague [PERSON_2] uploaded.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 10,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 16,
+              "end": 21,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "PERSON",
+              "start": 60,
+              "end": 73,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Jack Thompson, a teacher in Melbourne, asked for an education discount on Litware.",
+          "safe": "[PERSON_1], a teacher in [LOCATION_1], asked for an education discount on Litware.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 13,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 28,
+              "end": 37,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "MISC",
+              "start": 74,
+              "end": 81,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Amara Okeke in Nairobi needs help migrating her data from the old Proseware workspace.",
+          "safe": "[PERSON_1] in [LOCATION_1] needs help migrating her data from the old Proseware workspace.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 11,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 15,
+              "end": 22,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "MISC",
+              "start": 66,
+              "end": 75,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Lucía Fernández from Buenos Aires wants to know why her refund is taking so long.",
+          "safe": "[PERSON_1] from [LOCATION_1] wants to know why her refund is taking so long.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 15,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 21,
+              "end": 33,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Viktor Ivanov at Adventure Works in Sofia says the dashboard shows another customer's data.",
+          "safe": "[PERSON_1] at [ORG_1] in [LOCATION_1] says the dashboard shows another customer's data.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 13,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 17,
+              "end": 32,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 36,
+              "end": 41,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Hannah Schmidt from Vienna asked us to delete her account and all associated records.",
+          "safe": "[PERSON_1] from [LOCATION_1] asked us to delete her account and all associated records.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 14,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 20,
+              "end": 26,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Ravi Kumar, the owner of a bakery in Chennai, cannot connect his card reader.",
+          "safe": "[PERSON_1], the owner of a bakery in [LOCATION_1], cannot connect his card reader.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 10,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 37,
+              "end": 44,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        },
+        {
+          "text": "Ingrid Larsen from Oslo reports that the Wingtip tracking page shows the wrong address.",
+          "safe": "[PERSON_1] from [LOCATION_1] reports that the [ORG_1] tracking page shows the wrong address.",
+          "modelSpans": [
+            {
+              "type": "PERSON",
+              "start": 0,
+              "end": 13,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "LOCATION",
+              "start": 19,
+              "end": 23,
+              "priority": 10,
+              "source": "model"
+            },
+            {
+              "type": "ORG",
+              "start": 41,
+              "end": 48,
+              "priority": 10,
+              "source": "model"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelName": "fp32",
+      "ep": "wasm",
+      "threads": 4,
+      "initMs": 836,
+      "isolated": true,
+      "agreementVsNativeSameModel": 1,
+      "agreementVsPytorchFp32": 1,
+      "medianMs": 56.28
+    },
+    {
+      "modelName": "int8",
+      "ep": "webgpu",
+      "threads": 4,
+      "initMs": 205,
+      "isolated": true,
+      "agreementVsNativeSameModel": 0.6813,
+      "agreementVsPytorchFp32": 0.679,
+      "medianMs": 84.8
+    },
+    {
+      "modelName": "fp32",
+      "ep": "webgpu",
+      "threads": 4,
+      "initMs": 425,
+      "isolated": true,
+      "agreementVsNativeSameModel": 1,
+      "agreementVsPytorchFp32": 1,
+      "medianMs": 17.45
+    },
+    {
+      "modelName": "fp16",
+      "ep": "webgpu",
+      "threads": 4,
+      "initMs": 516,
+      "isolated": true,
+      "agreementVsNativeSameModel": 0.9988,
+      "agreementVsPytorchFp32": 0.9988,
+      "medianMs": 14.83
+    },
+    {
+      "modelName": "fp16",
+      "ep": "wasm",
+      "threads": 4,
+      "initMs": 322,
+      "isolated": true,
+      "agreementVsNativeSameModel": 1,
+      "agreementVsPytorchFp32": 1,
+      "medianMs": 59.02
+    }
+  ],
+  "selfTest": [
+    {
+      "modelName": "int8",
+      "ep": "webgpu",
+      "agreement": 0.7209
+    },
+    {
+      "modelName": "fp16",
+      "ep": "webgpu",
+      "agreement": 1
+    },
+    {
+      "modelName": "int8",
+      "ep": "wasm",
+      "agreement": 0.9535
+    }
+  ]
+}

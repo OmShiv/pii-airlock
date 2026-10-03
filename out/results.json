@@ -1,0 +1,51 @@
+{
+  "model": "dslim/distilbert-NER",
+  "labels": [
+    "O",
+    "B-PER",
+    "I-PER",
+    "B-ORG",
+    "I-ORG",
+    "B-LOC",
+    "I-LOC",
+    "B-MISC",
+    "I-MISC"
+  ],
+  "sequence_length": 128,
+  "variants": {
+    "onnx-fp32": {
+      "size_mb": 261.8,
+      "token_agreement_vs_pytorch": 1.0,
+      "latency_ms_1_thread": 16.05,
+      "latency_ms_4_threads": 8.83
+    },
+    "onnx-int8": {
+      "size_mb": 66.3,
+      "token_agreement_vs_pytorch": 0.9873,
+      "latency_ms_1_thread": 18.71,
+      "latency_ms_4_threads": 9.88
+    },
+    "tflite-fp32": {
+      "size_mb": 259.9,
+      "input_names": [
+        "args_0",
+        "args_1"
+      ],
+      "token_agreement_vs_pytorch": 1.0,
+      "latency_ms_1_thread": 9.86,
+      "latency_ms_4_threads": 8.75
+    },
+    "tflite-int8": {
+      "size_mb": 66.5,
+      "input_names": [
+        "args_0",
+        "args_1"
+      ],
+      "token_agreement_vs_pytorch": 0.9942,
+      "latency_ms_1_thread": 9.38,
+      "latency_ms_4_threads": 6.31
+    }
+  },
+  "pytorch_latency_ms": 11.17,
+  "sentences": 40
+}
