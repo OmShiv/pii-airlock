@@ -1,0 +1,9 @@
+torch
+transformers
+onnx
+onnxruntime
+onnxscript
+onnxconverter-common
+litert-torch
+ai-edge-quantizer
+ai-edge-litert

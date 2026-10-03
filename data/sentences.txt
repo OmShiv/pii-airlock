@@ -1,0 +1,40 @@
+Hi, this is Priya Raman from Contoso in Seattle. My card ending 1111 was charged twice.
+Please call Daniel Okafor back at +1 206 555 0143 about the refund for order 88412.
+Maria Gonzalez in Madrid says the invoice from Fabrikam never arrived at maria.gonzalez@example.com.
+Tom Becker asked whether Northwind Traders can move his delivery to the Berlin warehouse.
+Our customer Aiko Tanaka, who works at Tailspin Toys in Osaka, cannot log in since Tuesday.
+Escalate to Rahul Mehta: the Adventure Works account in Pune is locked after three attempts.
+Sophie Martin from Lyon wants her subscription paused until she returns from Montreal.
+James O'Connor emailed from Dublin about a duplicate charge on his Woodgrove Bank statement.
+Lena Fischer and her colleague Jonas Weber at Litware in Munich both report the same sync error.
+The shipment for Carlos Silva is stuck in customs at São Paulo, according to Wingtip Logistics.
+Fatima Al-Sayed called from Dubai to update the billing address for Proseware.
+Wei Zhang from Shanghai needs a VAT invoice for the Contoso enterprise plan.
+Ngozi Adeyemi at Lagos General Hospital asked us to remove her old phone number from the account.
+Arjun Nair in Bengaluru reports that the mobile app crashes when he opens the payments tab.
+Emma Johansson from Stockholm would like a callback from someone on the Fabrikam team.
+Hiroshi Sato, the IT admin at Tailspin Toys, wants to reset two-factor authentication for Kenji Mori.
+Olivia Brown says the technician from Northwind never showed up at her flat in Manchester.
+Please refund Lucas Moreau, who was billed in euros although he lives in Quebec.
+Ana Petrović from Belgrade cannot download last month's statement from the Woodgrove portal.
+Mohammed Rahman at Adventure Works in Dhaka asked for a copy of his contract.
+Grace Kim from Toronto reports that her password reset link expired before she could use it.
+The ticket from Peter Novak in Prague mentions a missing parcel sent through Wingtip Logistics.
+Isabella Rossi wants to transfer the Litware license to her new manager, Marco Bianchi, in Milan.
+Samuel Mensah from Accra asked why his Proseware trial ended early.
+Chloé Dubois in Brussels needs her account name changed after her marriage.
+Kwame Asante, who manages procurement at Contoso Ghana, wants a quote for fifty seats.
+Elif Yılmaz from Istanbul says the app shows prices in the wrong currency.
+Noah Williams called from Austin to cancel the Fabrikam add-on he never ordered.
+Mei Lin at Tailspin Toys in Taipei is waiting on a replacement device.
+Rafael Costa from Lisbon asked whether Northwind Traders ships to Porto on weekends.
+Zainab Bello reported that the courier left her package with a neighbour in Abuja.
+Daniel Cohen at Woodgrove Bank in Tel Aviv wants API access for his team.
+Sakura Ito from Kyoto cannot see the invoices her colleague Yuki Watanabe uploaded.
+Jack Thompson, a teacher in Melbourne, asked for an education discount on Litware.
+Amara Okeke in Nairobi needs help migrating her data from the old Proseware workspace.
+Lucía Fernández from Buenos Aires wants to know why her refund is taking so long.
+Viktor Ivanov at Adventure Works in Sofia says the dashboard shows another customer's data.
+Hannah Schmidt from Vienna asked us to delete her account and all associated records.
+Ravi Kumar, the owner of a bakery in Chennai, cannot connect his card reader.
+Ingrid Larsen from Oslo reports that the Wingtip tracking page shows the wrong address.
