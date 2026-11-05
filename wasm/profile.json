@@ -1,0 +1,22 @@
+{
+  "profile_format": 1,
+  "name": "airlock_rules",
+  "entry": "rules.ts",
+  "emission": "llvm",
+  "abi": {
+    "prefix": "airlock_",
+    "init_symbol": "airlock_init",
+    "sink_register_symbol": "airlock_sink"
+  },
+  "callbacks": [],
+  "exports": [
+    {
+      "export": "redact",
+      "symbol": "airlock_redact",
+      "params": [
+        "string"
+      ],
+      "returns": "string"
+    }
+  ]
+}

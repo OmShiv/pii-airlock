@@ -21,6 +21,8 @@ Chrome 155 on an Apple M4 Pro with its Metal GPU, ONNX Runtime Web 1.30, one 128
 
 On 40 synthetic tickets, all 44 person names are redacted. The worker runs a golden-input self-test at startup and refuses a backend that disagrees with PyTorch. Native and LiteRT numbers are in [`out/results.json`](out/results.json), browser runs in [`out/browser-results.json`](out/browser-results.json).
 
+The rule engine also compiles to WebAssembly with scriptc; see [`wasm/`](wasm/README.md) for the build, a page that runs it under three Content Security Policies, and the measurements.
+
 ## Run it
 
 ```sh

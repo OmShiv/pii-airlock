@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-05T18:44:47.356Z",
+  "browser": "Chrome/158.0.8127.18",
+  "runs": [
+    {
+      "page": "none",
+      "csp": null,
+      "policy": "none",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+      "inputs": 45,
+      "reps": 300,
+      "violations": [],
+      "js": {
+        "msPerPass": 0.021666666666666667
+      },
+      "wasm": {
+        "status": "ran",
+        "compileMs": 6.5,
+        "instantiateMs": 1.9000000953674316,
+        "mismatches": 0,
+        "msPerPass": 0.21
+      }
+    },
+    {
+      "page": "strict",
+      "csp": "default-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; script-src 'self'",
+      "policy": "strict",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+      "inputs": 45,
+      "reps": 300,
+      "violations": [
+        "script-src blocked wasm-eval"
+      ],
+      "js": {
+        "msPerPass": 0.020666666825612388
+      },
+      "wasm": {
+        "status": "blocked",
+        "error": "CompileError: WebAssembly.compileStreaming(): Compiling or instantiating WebAssembly module violates the following Content Security policy directive because 'unsafe-eval' is not an allowed source of script in the following Content Security Policy directive: \"script-src 'self'\"."
+      }
+    },
+    {
+      "page": "strict-wasm",
+      "csp": "default-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; script-src 'self' 'wasm-unsafe-eval'",
+      "policy": "strict-wasm",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+      "inputs": 45,
+      "reps": 300,
+      "violations": [],
+      "js": {
+        "msPerPass": 0.020666666825612388
+      },
+      "wasm": {
+        "status": "ran",
+        "compileMs": 3.9000000953674316,
+        "instantiateMs": 1.7999999523162842,
+        "mismatches": 0,
+        "msPerPass": 0.21333333333333335
+      }
+    }
+  ]
+}

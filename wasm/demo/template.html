@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebAssembly under a Content Security Policy</title>
+<meta name="description" content="The same privacy filter as JavaScript and as WebAssembly compiled with scriptc, under three Content Security Policies.">
+<link rel="stylesheet" href="{{ROOT}}assets/demo.css">
+<script type="module" src="{{ROOT}}assets/demo.js"></script>
+</head>
+<body data-policy="{{ID}}">
+<main>
+  <p class="kicker"><a href="https://omshankar.app">omshankar.app</a> / demos</p>
+  <h1>WebAssembly under a Content Security Policy</h1>
+  <p>This page runs one privacy filter twice: as plain JavaScript, and as WebAssembly compiled from the same source file with <a href="https://github.com/vercel-labs/scriptc">scriptc</a> {{SCRIPTC}}. The filter replaces emails, card numbers, IBANs and phone numbers with placeholders. It runs entirely in your browser; nothing you type leaves the page.</p>
+  <p>Three copies of the page differ only in the <code>Content-Security-Policy</code> header the server sends:</p>
+  <ul class="policies">{{LINKS}}</ul>
+
+  <h2>This copy</h2>
+  <p class="policy-label">{{LABEL}}</p>
+  <pre class="csp">{{CSP}}</pre>
+
+  <h2>Results in your browser</h2>
+  <table id="results"><tbody><tr><td>Running...</td></tr></tbody></table>
+
+  <h2>Try it</h2>
+  <label for="input">Text to redact</label>
+  <textarea id="input" rows="3">Card 4111 1111 1111 1111 and IBAN DE89 3704 0044 0532 0130 00 for Zoë, or call +44 20 7946 0958.</textarea>
+  <button id="run" type="button">Redact with both</button>
+  <dl id="outputs"></dl>
+
+  <p class="foot">Source: <a href="https://github.com/OmShiv/pii-airlock">github.com/OmShiv/pii-airlock</a> (the <code>wasm</code> folder). The filter itself is <code>web/airlock.js</code>.</p>
+</main>
+</body>
+</html>

@@ -4,3 +4,6 @@ __pycache__/
 out/*.onnx
 out/*.tflite
 .DS_Store
+wasm/out/*.wasm
+wasm/out/*.ll
+wasm/site/

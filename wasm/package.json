@@ -1,0 +1,17 @@
+{
+  "name": "pii-airlock-wasm",
+  "private": true,
+  "type": "module",
+  "description": "The airlock's rule engine compiled to WebAssembly with scriptc, and a page that runs it under different Content Security Policies.",
+  "scripts": {
+    "build": "SCRIPTC_TARGET=wasm32-wasi scriptc build --lib --profile profile.json -o out/airlock-rules.wasm && node demo/build.mjs",
+    "check": "node check.mjs",
+    "serve": "node demo/serve.mjs",
+    "bench": "node demo/bench.mjs"
+  },
+  "devDependencies": {
+    "@scriptc/runtime-wasm32-wasi": "0.4.8",
+    "scriptc": "0.4.8"
+  },
+  "license": "MIT"
+}

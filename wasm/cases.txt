@@ -1,0 +1,5 @@
+Card 4111 1111 1111 1111 and IBAN DE89 3704 0044 0532 0130 00 for Zoë in München.
+Ünïcödé first: call +44 20 7946 0958 or write to zoë.müller@example.com today.
+Emoji first 😀 then card 5555 5555 5555 4444 then email a.b@example.org.
+日本語のテキスト: card 4012 8888 8888 1881, phone +81 3 1234 5678.
+Invalid card 4111 1111 1111 1112 should stay, valid IBAN GB82 WEST 1234 5698 7654 32 should go.
