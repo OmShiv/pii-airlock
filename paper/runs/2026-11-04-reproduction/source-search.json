@@ -1,0 +1,10 @@
+{
+  "status": "fulfilled",
+  "value": {
+    "chunk_id": "477537",
+    "wall_time_seconds": 0.000007041,
+    "exit_code": 0,
+    "original_token_count": 19,
+    "output": "/Users/omshankar/dev/research/pii-airlock/out/airlock-ner.int8.onnx.sha256\n"
+  }
+}

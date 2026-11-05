@@ -6,7 +6,7 @@ Author: Om Shankar Tiwari, ORCID https://orcid.org/0009-0001-2247-0383. Working 
 
 Updated 2026-11-04 America/Los_Angeles (tool timestamps may show 2026-11-05 UTC).
 
-- M0: source recovery and research scaffolding prepared; remote milestone pending.
+- M0 committed and remote main verified: `2523e0f72ab11bb56299239dfe01c45d0d49af19`. M1 audit complete; fresh inference remains blocked.
 - Baseline pinned to `7a983f237eff1c9e453b99af564bf38f70364e43` on `OmShiv/pii-airlock`, main. All 27 tracked blobs recovered and verified byte-for-byte against Git blob hashes. README, Python export/reference/compare scripts, browser worker/benchmark/tokenizer/redactor, tests and every `out/*.json` inspected.
 - Existing `npm test`: 5/5 pass on Node 26.5.1. These exercise tokenizer parity and saved spans, not fresh inference.
 - Fresh inference reproduction blocked: model binaries intentionally untracked and absent; Python 3.11/ML dependencies absent; `npm ci` fails DNS for registry.npmjs.org; shell clone fails DNS for github.com; workspace forbids `.git` writes. GitHub connector read/write access works. No fresh accuracy or latency measurement yet.
@@ -24,8 +24,8 @@ Updated 2026-11-04 America/Los_Angeles (tool timestamps may show 2026-11-05 UTC)
 
 | Milestone | Scope | State |
 |---|---|---|
-| M0 | source snapshot, rules, paper scaffold | prepared |
-| M1 | existing-output audit and reproduction attempt | in progress |
+| M0 | source snapshot, rules, paper scaffold | remote verified 2523e0f |
+| M1 | existing-output audit and reproduction attempt | complete account; no fresh inference |
 | M2 | verified literature, BibTeX and gap | pending |
 | M3 | experiment protocol and RQ2 reproduction account | pending |
 | M4 | venue dates, verification and final handoff | pending |
@@ -34,5 +34,9 @@ Updated 2026-11-04 America/Los_Angeles (tool timestamps may show 2026-11-05 UTC)
 
 - Target accepted **and published** by early March 2027; acceptance alone or an arXiv preprint does not satisfy this.
 - Full requested multi-GPU/device experiments are later work; this session delivers a protocol and an honest reproduction attempt.
-- Apple M4 Pro ownership is user-reported. Other devices are unconfirmed; device question pending.
+- User reports Apple M4 Pro, Pixel 10 Pro XL and iPhone 17 Pro Max. Current session host independently reports Apple M5 Pro / 24 GB / Chrome 157; do not conflate the two Mac configurations. Intel/NVIDIA/AMD and a second Android GPU remain access gaps.
 - No submission, upstream filing, contact or remote LLM call authorized.
+
+## M1 evidence
+
+See paper/REPRODUCTION.md and paper/derived/existing-audit.json. Recomputed native int8/fp32 agreement: 855/866 including special tokens, 775/786 content-only. Browser aggregate counts are inferred from rounded rates, not recovered predictions. Existing figures match user rounding; a fresh-run difference is unavailable. Self-test only scores; strict fp32 equality would also reject the saved int8/WASM path.

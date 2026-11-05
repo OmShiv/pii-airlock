@@ -1,0 +1,10 @@
+{
+  "status": "fulfilled",
+  "value": {
+    "chunk_id": "025a0e",
+    "wall_time_seconds": 0.000006792,
+    "exit_code": 128,
+    "original_token_count": 42,
+    "output": "Cloning into '/private/tmp/pii-airlock-session-20261104'...\nfatal: unable to access 'https://github.com/OmShiv/pii-airlock.git/': Could not resolve host: github.com\n"
+  }
+}

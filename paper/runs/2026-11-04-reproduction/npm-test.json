@@ -1,0 +1,10 @@
+{
+  "status": "fulfilled",
+  "value": {
+    "chunk_id": "bdbeac",
+    "wall_time_seconds": 0.11653725,
+    "exit_code": 0,
+    "original_token_count": 141,
+    "output": "npm notice run pii-airlock@0.1.0 test\nnpm notice run node --test test/*.test.mjs\n✔ the JS tokenizer matches the Python tokenizer on every sentence (9.780166ms)\n✔ structured detectors find identifiers and skip look-alikes (0.732958ms)\n✔ placeholders are consistent and round-trip (0.19275ms)\n✔ every person name is redacted, under every policy (5.1375ms)\n✔ the dictionary detector matches whole words and escapes regex characters (0.539334ms)\nℹ tests 5\nℹ suites 0\nℹ pass 5\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 59.0835\n"
+  }
+}

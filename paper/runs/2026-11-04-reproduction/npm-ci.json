@@ -1,0 +1,10 @@
+{
+  "status": "fulfilled",
+  "value": {
+    "chunk_id": "2950e6",
+    "wall_time_seconds": 0.254834,
+    "exit_code": 1,
+    "original_token_count": 162,
+    "output": "npm error code ENOTFOUND\nnpm error syscall getaddrinfo\nnpm error errno ENOTFOUND\nnpm error network request to https://registry.npmjs.org/zod/-/zod-3.25.76.tgz failed, reason: getaddrinfo ENOTFOUND registry.npmjs.org\nnpm error network This is a problem related to network connectivity.\nnpm error network In most cases you are behind a proxy or have bad network settings.\nnpm error network\nnpm error network If you are behind a proxy, please make sure that the 'proxy' config is set properly.  See: 'npm help config'\nnpm error A complete log of this run can be found in: /private/tmp/pii-airlock-npm-cache/_logs/2026-11-05T06_34_30_505Z-debug-0.log\n"
+  }
+}
