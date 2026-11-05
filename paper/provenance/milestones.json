@@ -10,5 +10,11 @@
     "commit": "017d0e77018b29cee80e023e6d862787781b76eb",
     "branch": "main",
     "remote_ref_read_back": true
+  },
+  {
+    "milestone": "M2",
+    "commit": "f4e73ee3b38f54715483f2fa695079a69071eec2",
+    "branch": "main",
+    "remote_ref_read_back": true
   }
 ]

@@ -1,0 +1,36 @@
+{
+  "verified_date_local": "2026-11-04",
+  "ort_webgpu_resolver": {
+    "url": "https://github.com/microsoft/onnxruntime/blob/v1.30.0/js/web/lib/wasm/jsep/webgpu/op-resolve-rules.ts",
+    "blob_sha": "bf38af48562cfe74aa028df9c64b5863f98870d9",
+    "DynamicQuantizeLinear_registered": false,
+    "MatMulInteger_registered": false,
+    "DequantizeLinear_registered": true,
+    "MatMulNBits_registered": true,
+    "limit": "Source registration inspection; not observed placement in the missing NER graph."
+  },
+  "ort_contrib_schema": {
+    "url": "https://github.com/microsoft/onnxruntime/blob/v1.30.0/docs/ContribOperators.md",
+    "blob_sha": "e92b02faa7f77e53e3ac8fada213785609df7088",
+    "finding": "MatMulNBits stores packed quantized weights with block scales; it is distinct from dynamic integer activation quantization."
+  },
+  "ort_issue": {
+    "url": "https://github.com/microsoft/onnxruntime/issues/15796",
+    "state": "closed",
+    "closed_at": "2024-05-23T18:20:13Z",
+    "uint8_comment_url": "https://github.com/microsoft/onnxruntime/issues/15796#issuecomment-1535755280",
+    "uint8_comment_date": "2023-05-05T06:07:37Z"
+  },
+  "llm_redactor": {
+    "commit": "059d3e0d2862a18faa56fbe7bf9a3b028c691f41",
+    "url": "https://github.com/jayluxferro/llm-redactor/tree/059d3e0d2862a18faa56fbe7bf9a3b028c691f41/evals/workloads",
+    "observed_annotations": ["wl1_pii/annotations.jsonl", "wl2_secrets/annotations.jsonl", "wl3_implicit/annotations.jsonl", "wl4_code/annotations.jsonl"],
+    "limit": "Paths and evaluation documentation inspected, not downloaded or counted as benchmark records."
+  },
+  "surrogateshield": {
+    "commit": "b1488c31eb3d71169b2f2cb374767dd8c87e97bb",
+    "url": "https://github.com/sherwinvishesh/SurrogateShield/blob/b1488c31eb3d71169b2f2cb374767dd8c87e97bb/bench/realdata/README.md",
+    "finding": "Public injected dev/test data and source-ID/label manifests exist. Natural text requires reconstruction from upstream sources, some gated.",
+    "limit": "Current repository artifacts were not shown identical to the original paper corpus."
+  }
+}

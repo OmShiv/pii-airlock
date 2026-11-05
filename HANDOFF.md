@@ -11,7 +11,7 @@ Updated 2026-11-04 America/Los_Angeles (tool timestamps may show 2026-11-05 UTC)
 - Existing `npm test`: 5/5 pass on Node 26.5.1. These exercise tokenizer parity and saved spans, not fresh inference.
 - Fresh inference reproduction blocked: model binaries intentionally untracked and absent; Python 3.11/ML dependencies absent; `npm ci` fails DNS for registry.npmjs.org; shell clone fails DNS for github.com; workspace forbids `.git` writes. GitHub connector read/write access works. No fresh accuracy or latency measurement yet.
 - Important audit finding: `worker.js` computes and returns self-test agreement; it does not implement an enforced readiness/refusal state. `bench.html` reports self-tests separately after inference. README's claim that startup refuses a disagreeing backend is not established by this code.
-- Literature map and BibTeX complete: 39 primary research/technical sources. GAP.md records substantial prior overlap (including TapML and GPU Canary) and a conditional privacy/backend/runtime-guard gap. Protocol, RQ2 account and venue audit in progress.
+- Literature map and BibTeX complete: 39 primary research/technical sources. GAP.md records substantial prior overlap (including TapML and GPU Canary) and a conditional privacy/backend/runtime-guard gap. Protocol, device access list and RQ2 written account/harness complete. Venue audit/final checks in progress.
 
 ## Resume
 
@@ -27,7 +27,7 @@ Updated 2026-11-04 America/Los_Angeles (tool timestamps may show 2026-11-05 UTC)
 | M0 | source snapshot, rules, paper scaffold | remote verified 2523e0f |
 | M1 | existing-output audit and reproduction attempt | complete account; no fresh inference |
 | M2 | verified literature, BibTeX and gap | complete; 39 sources, conditional gap |
-| M3 | experiment protocol and RQ2 reproduction account | pending |
+| M3 | experiment protocol and RQ2 reproduction account | complete protocol/account; harness inference unexecuted |
 | M4 | venue dates, verification and final handoff | pending |
 
 ## Decisions and limits
@@ -44,3 +44,7 @@ See paper/REPRODUCTION.md and paper/derived/existing-audit.json. Recomputed nati
 ## M2 evidence
 
 M1 remote verified: `017d0e77018b29cee80e023e6d862787781b76eb`. `python3 paper/scripts/build_literature.py` regenerates 39 BibTeX entries and the literature map. Source metadata and hashes are retained; full retrieved text is held only in a temporary cache. PAPILLON is also NAACL 2025; Wang TOSEM publisher date is January 2025. Do not use the initial broad novelty claim.
+
+## M3 evidence and next execution
+
+M2 remote verified: `f4e73ee3b38f54715483f2fa695079a69071eec2`. Read paper/PROTOCOL.md, DEVICES.md and rq2/README.md. `node paper/rq2/prepare_inputs.mjs` verifies 40 fixtures; worker and HTML JavaScript parse. Four synthetic comparator tests pass; they do not validate browser inference. `python3 paper/rq2/inventory.py out/airlock-ner.int8.onnx` exits 2 because the model is absent. First live step after dependencies/model are available: `npm run serve`, open `/paper/rq2/?ep=wasm&optimization=disabled&limit=1&repeats=3`, then WebGPU and optimization=all, saving JSON and console. No issue filed; unfiled issue template is explicitly incomplete.

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PII airlock backend diagnostic</title>
+<style>body{max-width:65rem;margin:2rem auto;padding:0 1rem;font:16px system-ui;line-height:1.5}pre{white-space:pre-wrap;word-break:break-word}button{padding:.7rem}a{color:#1457a6}</style>
+<h1>Backend diagnostic</h1>
+<p>This diagnostic loads a local model and frozen smoke-test tensors. It saves raw outputs for comparison. It does not send prompts to an LLM.</p>
+<p>Set provider, model, SHA-256, optimization, fixture limit and repeat count in the URL; see <a href="README.md">instructions</a>.</p>
+<button id="run">Run diagnostic</button> <a id="download" hidden>Download result JSON</a>
+<pre id="status">Ready to run. Inference has not been executed.</pre>
+<script type="module">
+const params = new URLSearchParams(location.search);
+const localURL = value => { const u = new URL(value, location.href); if (u.origin !== location.origin) throw new Error('same-origin assets required'); return u.href; };
+const status = document.querySelector('#status');
+window.done = false;
+document.querySelector('#run').onclick = async () => {
+  const button = document.querySelector('#run'); button.disabled = true;
+  let worker, timer;
+  try {
+    const response = await fetch('./inputs.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`fixtures: HTTP ${response.status}`);
+    const fixtures = await response.json();
+    const ep = params.get('ep') ?? 'webgpu';
+    const optimization = params.get('optimization') ?? 'all';
+    const threads = Number(params.get('threads') ?? 4);
+    const repeats = Number(params.get('repeats') ?? 3);
+    const limit = Number(params.get('limit') ?? 1);
+    if (!['wasm', 'webgpu', 'webnn'].includes(ep) || !['disabled', 'basic', 'extended', 'all'].includes(optimization)) throw new Error('invalid provider/optimization');
+    if (![threads, repeats, limit].every(Number.isInteger) || threads < 1 || threads > 16 || repeats < 1 || repeats > 100 || limit < 1 || limit > fixtures.fixtures.length) throw new Error('invalid numeric configuration');
+    const expectedSha = params.get('sha') ?? fixtures.original_int8_sha256;
+    if (!/^[a-f0-9]{64}$/.test(expectedSha)) throw new Error('expected SHA-256 required');
+    const config = { model: localURL(params.get('model') ?? '/out/airlock-ner.int8.onnx'), expectedSha, ep, threads, repeats, optimization,
+      fixtures: fixtures.fixtures.slice(0, limit), pinned_ort_web: fixtures.pinned_ort_web };
+    status.textContent = 'Running; raw logs appear in the browser console. No result is available yet.';
+    worker = new Worker('./worker.js', { type: 'module' });
+    const result = await new Promise((resolve, reject) => {
+      timer = setTimeout(() => reject(new Error('diagnostic timeout after 120 seconds')), 120000);
+      worker.onmessage = event => resolve(event.data);
+      worker.onerror = event => reject(new Error(event.message));
+      worker.postMessage(config);
+    });
+    result.browser = { userAgent: navigator.userAgent, isolated: self.crossOriginIsolated, date: new Date().toISOString() };
+    window.results = result;
+    status.textContent = JSON.stringify({ ok: result.ok, model_sha256: result.model_sha256, runs: result.runs.length, error: result.error,
+      placement_verified: result.placement_verified, note: 'Raw logits and exact tensors are in the download; correctness was not certified.' }, null, 2);
+    const link = document.querySelector('#download');
+    if (link.href.startsWith('blob:')) URL.revokeObjectURL(link.href);
+    link.href = URL.createObjectURL(new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' }));
+    link.download = `diagnostic-${ep}-${optimization}-${Date.now()}.json`; link.hidden = false;
+  } catch (error) {
+    window.results = { ok: false, error: String(error?.stack ?? error), evidence_kind: 'diagnostic_failure_not_measurement' };
+    status.textContent = window.results.error;
+  } finally {
+    clearTimeout(timer); worker?.terminate(); button.disabled = false; window.done = true;
+  }
+};
+</script></html>
