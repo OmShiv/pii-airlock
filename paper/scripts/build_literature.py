@@ -11,6 +11,9 @@ bib, rows = [], []
 for i, r in enumerate(records, 1):
     assert all(r.get(k) for k in ['key', 'title', 'url', 'status', 'group', 'support', 'scope_limit', 'verified_on'])
     fields = {k: v for k, v in r.items() if k in {'title', 'author', 'year', 'booktitle', 'journal', 'volume', 'number', 'pages', 'doi', 'url', 'eprint', 'archivePrefix'}}
+    for field in ['title', 'booktitle', 'journal', 'note']:
+        if field in fields:
+            fields[field] = str(fields[field]).replace('&', r'\&').replace('_', r'\_').replace('%', r'\%')
     fields['urldate'] = r['verified_on']
     fields['note'] = r['status']
     bib.append('@' + r.get('type', 'misc') + '{' + r['key'] + ',\n' + ',\n'.join('  ' + k + ' = {' + str(v) + '}' for k, v in fields.items()) + '\n}')

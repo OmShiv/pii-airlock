@@ -1,6 +1,6 @@
 {
   "date_local": "2026-11-04",
-  "search_results_requested": 154,
+  "search_results_requested": 159,
   "unique_curated_bibliography_entries": 39,
   "note": "URL and response hashes are provenance, not independent verification. Full copyrighted page text is not redistributed. Verification findings are paraphrased in references.json and the literature map. Raw experimental data remain in out/ and paper/runs/.",
   "retrievals": [
@@ -735,6 +735,23 @@
       ],
       "result_status": "fulfilled",
       "scope": "source metadata and relevant excerpts inspected; not full-paper review"
+    },
+    {
+      "retrieval_id": "venues-workshop-check",
+      "verified_on": "2026-11-04",
+      "response_sha256": "e11168316089c8ab5499094c78374a71544400e26c09bb90447ea7d81651f6bb",
+      "urls": [
+        "https://deep-learning-profiling-tools.github.io/CAT-Lab/conference-deadlines/",
+        "https://lnkd.in/g8Z-qhp7",
+        "https://lnkd.in/gUH_xcrG",
+        "https://mobisys27.hotcrp.com/.",
+        "https://www.linkedin.com/posts/roshan-ayyalasomayajula_welcome-to-acm-mobisys-2027-activity-7510125232637227008-Lha9",
+        "https://www.myhuiban.com/conference/357",
+        "https://www.sigmobile.org/mobisys/2027/",
+        "https://www.sigmobile.org/mobisys/2027/.",
+        "https://www.sigmobile.org/mobisys/2027/call_for_papers/"
+      ],
+      "scope": "MobiSys 2027 workshop schedule search; official main-track CFP found, no workshop-specific schedule verified"
     }
   ]
 }

@@ -1,0 +1,55 @@
+{
+  "evidence_kind": "workspace_validation_not_inference",
+  "original_blobs_verified": 27,
+  "source_commit": "7a983f237eff1c9e453b99af564bf38f70364e43",
+  "bibtex_entries": 39,
+  "derived_artifacts_repeatable": true,
+  "fresh_inference_completed": false,
+  "checks": [
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "stdout": "\u2714 the JS tokenizer matches the Python tokenizer on every sentence (8.282583ms)\n\u2714 structured detectors find identifiers and skip look-alikes (0.575417ms)\n\u2714 placeholders are consistent and round-trip (0.168958ms)\n\u2714 every person name is redacted, under every policy (4.23375ms)\n\u2714 the dictionary detector matches whole words and escapes regex characters (0.440041ms)\n\u2139 tests 5\n\u2139 suites 0\n\u2139 pass 5\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 48.919958\n",
+      "stderr": "npm notice run pii-airlock@0.1.0 test\nnpm notice run node --test test/*.test.mjs\n"
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "paper/rq2",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_content_denominator_and_delta (test_compare.CompareTests.test_content_denominator_and_delta) ... ok\ntest_preserve_invalid_output (test_compare.CompareTests.test_preserve_invalid_output) ... ok\ntest_reject_different_artifact (test_compare.CompareTests.test_reject_different_artifact) ... ok\ntest_reject_missing_pair (test_compare.CompareTests.test_reject_missing_pair) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.117s\n\nOK\n"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "paper/rq2/worker.js"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "paper/rq2/prepare_inputs.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

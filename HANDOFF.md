@@ -4,47 +4,50 @@ Author: Om Shankar Tiwari, ORCID https://orcid.org/0009-0001-2247-0383. Working 
 
 ## Status
 
-Updated 2026-11-04 America/Los_Angeles (tool timestamps may show 2026-11-05 UTC).
+Updated 2026-11-04 America/Los_Angeles; UTC logs may show 2026-11-05.
 
-- M0 committed and remote main verified: `2523e0f72ab11bb56299239dfe01c45d0d49af19`. M1 audit complete; fresh inference remains blocked.
-- Baseline pinned to `7a983f237eff1c9e453b99af564bf38f70364e43` on `OmShiv/pii-airlock`, main. All 27 tracked blobs recovered and verified byte-for-byte against Git blob hashes. README, Python export/reference/compare scripts, browser worker/benchmark/tokenizer/redactor, tests and every `out/*.json` inspected.
-- Existing `npm test`: 5/5 pass on Node 26.5.1. These exercise tokenizer parity and saved spans, not fresh inference.
-- Fresh inference reproduction blocked: model binaries intentionally untracked and absent; Python 3.11/ML dependencies absent; `npm ci` fails DNS for registry.npmjs.org; shell clone fails DNS for github.com; workspace forbids `.git` writes. GitHub connector read/write access works. No fresh accuracy or latency measurement yet.
-- Important audit finding: `worker.js` computes and returns self-test agreement; it does not implement an enforced readiness/refusal state. `bench.html` reports self-tests separately after inference. README's claim that startup refuses a disagreeing backend is not established by this code.
-- Literature map and BibTeX complete: 39 primary research/technical sources. GAP.md records substantial prior overlap (including TapML and GPU Canary) and a conditional privacy/backend/runtime-guard gap. Protocol, device access list and RQ2 written account/harness complete. Venue audit/final checks in progress.
+**First-session documentation and analysis prepared. Fresh inference reproduction is blocked. No runtime bug or new leak-rate result is established.** Read AGENTS.md and paper/README.md before resuming. No completed benchmark or manuscript exists.
 
-## Resume
+| Milestone | State / remote evidence |
+|---|---|
+| M0 — source recovery/rules/scaffold | remote main verified: 2523e0f72ab11bb56299239dfe01c45d0d49af19 |
+| M1 — saved-output audit/reproduction attempt | remote main verified: 017d0e77018b29cee80e023e6d862787781b76eb; fresh inference not completed |
+| M2 — 39-source literature/BibTeX/gap | remote main verified: f4e73ee3b38f54715483f2fa695079a69071eec2 |
+| M3 — protocol/devices/RQ2 attempt/harness | remote main verified: 5358be6292624eb8fd347a04906616187ac63312 |
+| M4 — venue audit/final validation/handoff | prepared; remote checkpoint pending |
 
-1. Read AGENTS.md and paper/README.md, then the milestone documents.
-2. Preserve `out/` as historical evidence; write all new artifacts under paper/.
-3. In this restricted environment, use the GitHub connector, check the current main ref, create a tree based on that head, commit, update with expected SHA, and read the head back. Never claim a shell push.
-4. On a network-enabled machine: clean-clone the remote; install Python 3.11 and pinned dependencies into an isolated venv; export to a separate run directory and verify the original model hash before calling it the same artifact. Then run browser and native inference with raw per-token outputs.
+## Findings to preserve
 
-## Milestones
+- Baseline 7a983f237eff1c9e453b99af564bf38f70364e43 on OmShiv/pii-airlock main. All 27 original tracked blobs remain unchanged and hash-verified. README, all application/test/Python code and every out/*.json were read.
+- Saved percentages match user rounding. Forty tickets contain 866 non-padding positions including 80 special tokens, or 786 content tokens. Native int8/native fp32 recomputes to 855/866 or 775/786 content-only. Browser numerators are inferred from rounding, not recovered labels. No fresh difference/latency result exists.
+- The startup self-test returns a score; the worker enforces no readiness/refusal state. Strict equality to fp32 goldens would reject the saved int8/WASM path too. README's refusal claim exceeds the code. Application code was not changed.
+- Faulty WebGPU output lacks saved spans/payloads, so its leak rate is unmeasured. Saved 44/44 name coverage is a name-by-ticket incidence smoke check on WASM spans, not entity recall or GPU protection.
+- ORT 1.30's WebGPU resolver lacks DynamicQuantizeLinear/MatMulInteger registrations; actual graph/placement is missing. Fallback, integer semantics, optimization and warmup remain hypotheses. No cause diagnosed; issue 15796's uint8 comment is historical.
+- Broad novelty is unsupported: CRADLE, Guo, DiffChaser, CompD, TapML, DiTOX, PrecisionDiff, MPCDiff and GPU Canary overlap. GAP.md proposes the joint browser-backend/PII-leakage/readiness/runtime-guard study conditionally. PAPILLON also has NAACL 2025 publication; Wang TOSEM publisher date is Jan 21, 2025.
+- IEEE Access is the recommended timing route, based on typical four–six-week publication, not guaranteed acceptance. Later backup ISSTA 2027: Jan 8/11 abstract/paper; Apr 20 initial and Jun 17 final decision. It is usable only if eligible before the deadline and free of overlapping review. No guaranteed early-March route was verified.
 
-| Milestone | Scope | State |
-|---|---|---|
-| M0 | source snapshot, rules, paper scaffold | remote verified 2523e0f |
-| M1 | existing-output audit and reproduction attempt | complete account; no fresh inference |
-| M2 | verified literature, BibTeX and gap | complete; 39 sources, conditional gap |
-| M3 | experiment protocol and RQ2 reproduction account | complete protocol/account; harness inference unexecuted |
-| M4 | venue dates, verification and final handoff | pending |
+## Environment and blockers
 
-## Decisions and limits
+The supplied workspace /Users/omshankar/dev/research/pii-airlock was empty; ~/dev/pii-airlock absent. This is a materialized source snapshot, **not a normal local Git checkout**. Shell DNS fails for GitHub/npm and workspace .git writes are prohibited. GitHub connector read/write works; milestones use Git trees/commits/ref updates with expected-head checks and remote readback. Never force-push on mismatch.
 
-- Target accepted **and published** by early March 2027; acceptance alone or an arXiv preprint does not satisfy this.
-- Full requested multi-GPU/device experiments are later work; this session delivers a protocol and an honest reproduction attempt.
-- User reports Apple M4 Pro, Pixel 10 Pro XL and iPhone 17 Pro Max. Current session host independently reports Apple M5 Pro / 24 GB / Chrome 157; do not conflate the two Mac configurations. Intel/NVIDIA/AMD and a second Android GPU remain access gaps.
-- No submission, upstream filing, contact or remote LLM call authorized.
+Original model binaries are untracked and not located under ~/dev. Python 3.11/ML dependencies unavailable; installed Python 3.14.6. npm ci fails ENOTFOUND. Re-exporting with unpinned dependencies/model revisions may change artifacts.
 
-## M1 evidence
+User reports historical M4 Pro, Pixel 10 Pro XL and iPhone 17 Pro Max. Current host independently reports M5 Pro/24 GB/20 GPU cores, Chrome 157.0.8103.39 and Node 26.5.1, different from historical M4/Chrome155. Intel/NVIDIA/AMD and a second Android GPU require access. No lab/service booked or verified. No serials/UUIDs/UDIDs retained.
 
-See paper/REPRODUCTION.md and paper/derived/existing-audit.json. Recomputed native int8/fp32 agreement: 855/866 including special tokens, 775/786 content-only. Browser aggregate counts are inferred from rounded rates, not recovered predictions. Existing figures match user rounding; a fresh-run difference is unavailable. Self-test only scores; strict fp32 equality would also reject the saved int8/WASM path.
+## Validations
 
-## M2 evidence
+`python3 paper/scripts/verify_workspace.py`: 27/27 source hashes; repeatable audit/BibTeX/map/fixture artifacts; 39 BibTeX entries; 5/5 original tests; 4/4 synthetic comparator tests; worker/fixture JavaScript syntax. HTML module syntax separately checked. Inventory exits 2 (model missing), recorded in paper/runs/2026-11-04-reproduction/rq2-attempts.json. Browser/ML execution untested. Raw validation logs are in the same runs directory.
 
-M1 remote verified: `017d0e77018b29cee80e023e6d862787781b76eb`. `python3 paper/scripts/build_literature.py` regenerates 39 BibTeX entries and the literature map. Source metadata and hashes are retained; full retrieved text is held only in a temporary cache. PAPILLON is also NAACL 2025; Wang TOSEM publisher date is January 2025. Do not use the initial broad novelty claim.
+## Exact next work
 
-## M3 evidence and next execution
+1. Read paper/REPRODUCTION.md, GAP.md, PROTOCOL.md, DEVICES.md, rq2/README.md and VENUES.md. Recheck dates before route decisions; no submission authorized.
+2. On a network-enabled machine, clean-clone the remote; run `npm ci` and `npm test`. Locate original bytes matching out/airlock-ner.int8.onnx.sha256. Use isolated Python 3.11 and record package versions. If originals are unavailable, label re-exports and pin revisions/settings. Original exporters overwrite out/, so use a disposable clone and preserve saved JSON first.
+3. Run `node paper/rq2/prepare_inputs.mjs`, `python3 paper/rq2/inventory.py out/airlock-ner.int8.onnx > /tmp/int8-inventory.json`, and `npm run serve`.
+4. Open `http://127.0.0.1:8790/paper/rq2/?ep=wasm&optimization=disabled&limit=1&repeats=3`, run and save JSON+console. Repeat WebGPU and optimization=all; extend limit=40 to find candidates. `python3 paper/rq2/compare_runs.py wasm.json webgpu.json` compares identical hashes/tensors and content positions.
+5. Establish placement and first divergent tensors, then minimize. Complete the local issue template only after evidence establishes a runtime bug; do not file it.
+6. Freeze dataset revisions/IDs, label crosswalks, calibration and guard thresholds before held-out runs. Execute staged devices, cold-start/guard arms, public-data Presidio evaluation and local-LLM restoration. No such benchmark has run yet.
+7. Update this Status and commit each milestone. Full retrieved text is only in /private/tmp/pii-airlock-source-cache-20261104 and unnecessary for basic resumption; verification metadata are in paper/sources. Re-fetch primary texts for deeper review. Preserve ACKNOWLEDGMENTS.md and disclose AI-assisted methodology.
 
-M2 remote verified: `f4e73ee3b38f54715483f2fa695079a69071eec2`. Read paper/PROTOCOL.md, DEVICES.md and rq2/README.md. `node paper/rq2/prepare_inputs.mjs` verifies 40 fixtures; worker and HTML JavaScript parse. Four synthetic comparator tests pass; they do not validate browser inference. `python3 paper/rq2/inventory.py out/airlock-ner.int8.onnx` exits 2 because the model is absent. First live step after dependencies/model are available: `npm run serve`, open `/paper/rq2/?ep=wasm&optimization=disabled&limit=1&repeats=3`, then WebGPU and optimization=all, saving JSON and console. No issue filed; unfiled issue template is explicitly incomplete.
+## Authorization
+
+Research commits/pushes are authorized. No contact, issue filing, submission, remote LLM prompt, device spending or account creation is authorized. None occurred. The diagnostic is a local experiment tool, not a deployed privacy gate. No result or citation was fabricated to meet the date.
