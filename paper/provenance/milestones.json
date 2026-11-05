@@ -16,5 +16,17 @@
     "commit": "f4e73ee3b38f54715483f2fa695079a69071eec2",
     "branch": "main",
     "remote_ref_read_back": true
+  },
+  {
+    "milestone": "M3",
+    "commit": "5358be6292624eb8fd347a04906616187ac63312",
+    "branch": "main",
+    "remote_ref_read_back": true
+  },
+  {
+    "milestone": "M4",
+    "commit": "7c161b42dd3d5b0bc9f4698d5547926ed2b3d0c5",
+    "branch": "main",
+    "remote_ref_read_back": true
   }
 ]

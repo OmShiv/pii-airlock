@@ -6,7 +6,7 @@ Author: Om Shankar Tiwari, ORCID https://orcid.org/0009-0001-2247-0383. Working 
 
 Updated 2026-11-04 America/Los_Angeles; UTC logs may show 2026-11-05.
 
-**First-session documentation and analysis prepared. Fresh inference reproduction is blocked. No runtime bug or new leak-rate result is established.** Read AGENTS.md and paper/README.md before resuming. No completed benchmark or manuscript exists.
+**First-session documentation and analysis committed; remote verified. Fresh inference reproduction is blocked. No runtime bug or new leak-rate result is established.** Read AGENTS.md and paper/README.md before resuming. No completed benchmark or manuscript exists.
 
 | Milestone | State / remote evidence |
 |---|---|
@@ -14,7 +14,7 @@ Updated 2026-11-04 America/Los_Angeles; UTC logs may show 2026-11-05.
 | M1 — saved-output audit/reproduction attempt | remote main verified: 017d0e77018b29cee80e023e6d862787781b76eb; fresh inference not completed |
 | M2 — 39-source literature/BibTeX/gap | remote main verified: f4e73ee3b38f54715483f2fa695079a69071eec2 |
 | M3 — protocol/devices/RQ2 attempt/harness | remote main verified: 5358be6292624eb8fd347a04906616187ac63312 |
-| M4 — venue audit/final validation/handoff | prepared; remote checkpoint pending |
+| M4 — venue audit/final validation/handoff | remote main verified: 7c161b42dd3d5b0bc9f4698d5547926ed2b3d0c5 |
 
 ## Findings to preserve
 
