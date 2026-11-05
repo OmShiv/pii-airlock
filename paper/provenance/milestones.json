@@ -1,3 +1,14 @@
 [
-  {"milestone": "M0", "commit": "2523e0f72ab11bb56299239dfe01c45d0d49af19", "branch": "main", "remote_ref_read_back": true}
+  {
+    "milestone": "M0",
+    "commit": "2523e0f72ab11bb56299239dfe01c45d0d49af19",
+    "branch": "main",
+    "remote_ref_read_back": true
+  },
+  {
+    "milestone": "M1",
+    "commit": "017d0e77018b29cee80e023e6d862787781b76eb",
+    "branch": "main",
+    "remote_ref_read_back": true
+  }
 ]

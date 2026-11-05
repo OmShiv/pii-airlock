@@ -11,7 +11,7 @@ Updated 2026-11-04 America/Los_Angeles (tool timestamps may show 2026-11-05 UTC)
 - Existing `npm test`: 5/5 pass on Node 26.5.1. These exercise tokenizer parity and saved spans, not fresh inference.
 - Fresh inference reproduction blocked: model binaries intentionally untracked and absent; Python 3.11/ML dependencies absent; `npm ci` fails DNS for registry.npmjs.org; shell clone fails DNS for github.com; workspace forbids `.git` writes. GitHub connector read/write access works. No fresh accuracy or latency measurement yet.
 - Important audit finding: `worker.js` computes and returns self-test agreement; it does not implement an enforced readiness/refusal state. `bench.html` reports self-tests separately after inference. README's claim that startup refuses a disagreeing backend is not established by this code.
-- Literature verification, protocol, root-cause attempt and venue audit in progress. PrecisionDiff, DiffChaser and CompD broaden the overlap that the novelty statement must address.
+- Literature map and BibTeX complete: 39 primary research/technical sources. GAP.md records substantial prior overlap (including TapML and GPU Canary) and a conditional privacy/backend/runtime-guard gap. Protocol, RQ2 account and venue audit in progress.
 
 ## Resume
 
@@ -26,7 +26,7 @@ Updated 2026-11-04 America/Los_Angeles (tool timestamps may show 2026-11-05 UTC)
 |---|---|---|
 | M0 | source snapshot, rules, paper scaffold | remote verified 2523e0f |
 | M1 | existing-output audit and reproduction attempt | complete account; no fresh inference |
-| M2 | verified literature, BibTeX and gap | pending |
+| M2 | verified literature, BibTeX and gap | complete; 39 sources, conditional gap |
 | M3 | experiment protocol and RQ2 reproduction account | pending |
 | M4 | venue dates, verification and final handoff | pending |
 
@@ -40,3 +40,7 @@ Updated 2026-11-04 America/Los_Angeles (tool timestamps may show 2026-11-05 UTC)
 ## M1 evidence
 
 See paper/REPRODUCTION.md and paper/derived/existing-audit.json. Recomputed native int8/fp32 agreement: 855/866 including special tokens, 775/786 content-only. Browser aggregate counts are inferred from rounded rates, not recovered predictions. Existing figures match user rounding; a fresh-run difference is unavailable. Self-test only scores; strict fp32 equality would also reject the saved int8/WASM path.
+
+## M2 evidence
+
+M1 remote verified: `017d0e77018b29cee80e023e6d862787781b76eb`. `python3 paper/scripts/build_literature.py` regenerates 39 BibTeX entries and the literature map. Source metadata and hashes are retained; full retrieved text is held only in a temporary cache. PAPILLON is also NAACL 2025; Wang TOSEM publisher date is January 2025. Do not use the initial broad novelty claim.
