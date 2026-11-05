@@ -1,0 +1,143 @@
+{
+  "repository": "https://github.com/OmShiv/pii-airlock",
+  "commit": "7a983f237eff1c9e453b99af564bf38f70364e43",
+  "tree": "476e542c1a75e15d66080895f4456cbb13b5bd1a",
+  "method": "GitHub connector read pinned files; shell clone unavailable",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha": "553b4e95d254ded826a0eff334f04cfa391642fd",
+      "mode": "100644"
+    },
+    {
+      "path": ".gitignore",
+      "sha": "16ef556b26d830fe72c975d0a3577a9268dce96f",
+      "mode": "100644"
+    },
+    {
+      "path": "LICENSE",
+      "sha": "7246c9b6b69c4210ef996010bc25702ac39d39d1",
+      "mode": "100644"
+    },
+    {
+      "path": "README.md",
+      "sha": "0845b0afef49900e4047dd00338642e6722c95ca",
+      "mode": "100644"
+    },
+    {
+      "path": "data/entities.json",
+      "sha": "10b02460e3065c668d7f19a6e628497a676352c5",
+      "mode": "100644"
+    },
+    {
+      "path": "data/sentences.txt",
+      "sha": "d18d667567fb8413bba4dc7a22db95f0caecff71",
+      "mode": "100644"
+    },
+    {
+      "path": "out/airlock-ner.int8.onnx.sha256",
+      "sha": "073a7136bcf23e137bdb8ee457423b2f3f4e593a",
+      "mode": "100644"
+    },
+    {
+      "path": "out/browser-results.json",
+      "sha": "d58afc18b76cffc3d63b4c3c5a1c5b0cbc69121e",
+      "mode": "100644"
+    },
+    {
+      "path": "out/goldens.json",
+      "sha": "2bb8e1bab89288c3bf8c46acf87e3fa3178551ec",
+      "mode": "100644"
+    },
+    {
+      "path": "out/labels.json",
+      "sha": "e5046ad8e5c211dc2b3262a2aa2aa010b466d511",
+      "mode": "100644"
+    },
+    {
+      "path": "out/reference.json",
+      "sha": "ad4d9f9ee301b671613ea3e3316773259aae7f88",
+      "mode": "100644"
+    },
+    {
+      "path": "out/results.json",
+      "sha": "f8cfad6417bef740772efa3e009bfbcbcec4d438",
+      "mode": "100644"
+    },
+    {
+      "path": "out/vocab.txt",
+      "sha": "df100235ae2ec205739c88279e1f6282a834d88e",
+      "mode": "100644"
+    },
+    {
+      "path": "package-lock.json",
+      "sha": "62db7c91aeb1684b83073a9d7a892a92b3d57556",
+      "mode": "100644"
+    },
+    {
+      "path": "package.json",
+      "sha": "2e9ca307662b83c28dc01866e960cd7b15a84c75",
+      "mode": "100644"
+    },
+    {
+      "path": "python/compare_entities.py",
+      "sha": "70b71af9e6875efb141ec576e1169813c6282d89",
+      "mode": "100644"
+    },
+    {
+      "path": "python/export_models.py",
+      "sha": "2ba3932aa3186bd898e36a1b95887a326e8b9d27",
+      "mode": "100644"
+    },
+    {
+      "path": "python/reference.py",
+      "sha": "686600a508cbdb7c24da490ba3109e94dd5a296f",
+      "mode": "100644"
+    },
+    {
+      "path": "python/requirements.txt",
+      "sha": "4a9f9f199a7c5d145682028f4dd1fdb09ad167ea",
+      "mode": "100644"
+    },
+    {
+      "path": "test/airlock.test.mjs",
+      "sha": "02dd4fd27b75c807ea1f6dc66d7a861b71c298ac",
+      "mode": "100644"
+    },
+    {
+      "path": "test/redaction.test.mjs",
+      "sha": "25cf7c0400ff337e6cb5cb386e7ce4ff1cbe0d12",
+      "mode": "100644"
+    },
+    {
+      "path": "tools/bench.mjs",
+      "sha": "a23a92e5efbba7dcb9d912913f41db9c46b325e3",
+      "mode": "100644"
+    },
+    {
+      "path": "web/airlock.js",
+      "sha": "fa59f98a8b3205a658c136fdbd641592f9c1a591",
+      "mode": "100644"
+    },
+    {
+      "path": "web/bench.html",
+      "sha": "a2df338d626826d4405fa34e62958920da824bcc",
+      "mode": "100644"
+    },
+    {
+      "path": "web/serve.mjs",
+      "sha": "4fe0fcb048c66ef36e69c479dfadfecc1d4e3fda",
+      "mode": "100644"
+    },
+    {
+      "path": "web/tokenizer.js",
+      "sha": "8689132eb070843a4ae482fa92f0168b0d76f961",
+      "mode": "100644"
+    },
+    {
+      "path": "web/worker.js",
+      "sha": "bbc188de1ff6669be267e523081f800f5810e8ff",
+      "mode": "100644"
+    }
+  ]
+}
